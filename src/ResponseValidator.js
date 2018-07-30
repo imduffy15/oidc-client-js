@@ -273,7 +273,7 @@ export class ResponseValidator {
                     return Promise.reject(new Error("No key matching kid or alg found in signing keys"));
                 }
 
-                let audience = state.client_id;
+                let audience = settings.audience || state.client_id;
 
                 let clockSkewInSeconds = this._settings.clockSkew;
                 Log.debug("ResponseValidator._validateIdToken: Validaing JWT; using clock skew (in seconds) of: ", clockSkewInSeconds);
